@@ -1,7 +1,7 @@
 import pandas as pd
 
 
-def process_file():
+def process_file(df):
     """
     Read data from the cvs file files/employee_data.csv and do the following:
     1. Clean the data as best you can
@@ -10,7 +10,7 @@ def process_file():
 
     BONUS: save the clean data as a VALID JSON file
     """
-    df = pd.read_csv('files/employee_data.csv')
+    #df = pd.read_csv('files/employee_data.csv')
     new_df = df.drop(["tax_file_no"], axis=1) ##Removing tax_file_no, its always empty
     new_df.dropna(axis=0, how='all', inplace=True) #Removing empty rows
     new_df["is_married"] = new_df["is_married"].where(new_df["is_married"].str.isalpha()) ##removing wrong values in is_married
@@ -29,6 +29,9 @@ def process_file():
     ## Calculate most common employment_status
     print(f"Most common employment status: {new_df['employment_status'].mode()}")
 
+    return new_df
 
 
-process_file()
+#process_file()
+df = pd.read_csv('files/employee_data.csv')
+process_file(df)
