@@ -34,14 +34,12 @@ def get_orders_summary(accounts):
         pending_orders = 0
         for user_order in account_orders[user_account]:
             total_orders += 1
-            for order in all_orders:
-                ##print(user_order)
-                ##print(int(order["order_id"]))
-                if user_order == order["order_id"]:
-                    if order["status"] == "pending":
-                        pending_orders += 1
-                    if order["status"] == "completed":
-                        completed_orders += 1
+            if all_orders[int(user_order)-1]["status"] == "pending" :
+                pending_orders += 1
+
+            if all_orders[int(user_order)-1]["status"]== "completed":
+                completed_orders += 1
+
         orders_summary[user_account] = {
             'total_orders': total_orders,
             'completed_orders': completed_orders,
@@ -59,5 +57,5 @@ def orders_summary_to_csv(order_summary):
 
 
 summary  = get_orders_summary(accounts_list)
-orders_summary_to_csv(summary)
+##orders_summary_to_csv(summary)
 print(summary)
