@@ -23,16 +23,15 @@ def get_orders_summary(accounts):
     BONUS: create an CSV file with the summary, this can be done as a different function
     This can be done with external libraries
     """
-
     orders_summary = {}
     all_orders = data.orders
     account_orders = data.account_orders
 
-    for user_account in accounts:
+    for user_account in accounts: #We fetch each account and intialize counters
         total_orders = 0
         completed_orders = 0
         pending_orders = 0
-        for user_order in account_orders[user_account]:
+        for user_order in account_orders[user_account]: # We fetch each order in each account
             total_orders += 1
             if all_orders[int(user_order)-1]["status"] == "pending" :
                 pending_orders += 1
@@ -40,7 +39,7 @@ def get_orders_summary(accounts):
             if all_orders[int(user_order)-1]["status"]== "completed":
                 completed_orders += 1
 
-        orders_summary[user_account] = {
+        orders_summary[user_account] = { #Creating Summary
             'total_orders': total_orders,
             'completed_orders': completed_orders,
             'pending_orders': pending_orders
@@ -50,7 +49,7 @@ def get_orders_summary(accounts):
 
 def orders_summary_to_csv(order_summary):
     """
-    Takes a dict and it creates a csv file callse order_summary.csv
+    Takes a dict and it creates a csv file called order_summary.csv
     """
     df = pd.DataFrame.from_dict(order_summary)
     df.to_csv ('order_summary.csv')
