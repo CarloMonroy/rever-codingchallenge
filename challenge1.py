@@ -57,5 +57,5 @@ def orders_summary_to_csv(order_summary):
 
 
 summary  = get_orders_summary(accounts_list)
-##orders_summary_to_csv(summary)
+orders_summary_to_csv(summary)
 print(summary)
