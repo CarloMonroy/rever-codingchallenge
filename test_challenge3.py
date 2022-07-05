@@ -1,9 +1,6 @@
 import unittest
-
-import numpy as np
 from pandas.testing import assert_frame_equal
 import pandas as pd
-
 from challenge3 import process_file
 import numpy as np
 
@@ -26,7 +23,7 @@ class TestChallenge3(unittest.TestCase):
         cleaned_df = pd.DataFrame.from_dict(cleaned_data)
         processed_df = process_file(test_df)
 
-        assert_frame_equal(cleaned_df, processed_df)
+        assert_frame_equal(cleaned_df, processed_df) # We compare 2 dataframes using pandas testing
 
 
 if __name__ == '__main__':

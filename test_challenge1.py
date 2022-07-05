@@ -16,7 +16,7 @@ class MyTestCase(unittest.TestCase):
                    }
         }
 
-        self.assertDictEqual(get_orders_summary(accounts_list), test_case1)
+        self.assertDictEqual(get_orders_summary(accounts_list), test_case1) ## we compare te dict we are creating with our test_cases
 
 
 if __name__ == '__main__':
