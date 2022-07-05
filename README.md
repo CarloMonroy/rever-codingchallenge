@@ -58,3 +58,62 @@ In this challenge you need to read the csv file and perform the following:
 As a bonus you need save the clean data as a VALID JSON file.
 
 Remember that you can use any library
+
+## Libraries
+
+##AsyncIO
+```
+asyncio is a library to write concurrent code using the async/await syntax.
+
+asyncio is used as a foundation for multiple Python asynchronous frameworks that provide high-performance network and web-servers, database connection libraries, distributed task queues, etc.
+
+asyncio is often a perfect fit for IO-bound and high-level structured network code.
+```
+
+[AsyncIO](https://docs.python.org/3/library/asyncio.html)
+
+
+
+
+##AIOHTTP
+
+```
+Asynchronous HTTP Client/Server for asyncio and Python.
+```
+
+[AIOHHTP](https://docs.aiohttp.org/en/stable/)
+
+## Pandas
+
+```
+pandas is a fast, powerful, flexible and easy to use open source data analysis and manipulation tool,
+built on top of the Python programming language.
+```
+[Pandas](https://pandas.pydata.org/)
+
+## Json
+
+```
+JSON (JavaScript Object Notation), specified by RFC 7159 (which obsoletes RFC 4627) and by ECMA-404, is a lightweight data interchange format inspired by JavaScript object literal syntax (although it is not a strict subset of JavaScript 1 ).
+```
+[Json](https://docs.python.org/3/library/json.html)
+
+## Run proyect
+Create your virtual environment
+```
+$ python3 -m venv .venv
+```
+
+Activate VirtualEnv (Linux, Mac)
+```
+$ source .venv/bin/activate
+```
+
+Install requirements
+
+```
+$ pip install -r requirements.txt
+```
+
+##Challenge 2
+We are using AsyncIO and AIOHTTP to speed up the requests.
