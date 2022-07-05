@@ -1,24 +1,36 @@
 import asyncio
 import unittest
 from challenge2 import main
-import random
 
 
 class AsyncTest(unittest.TestCase):
     def test_get_todos(self):
-        test_cases = [{'userId': 1, 'id': 1, 'title': 'delectus aut autem', 'completed': False},
-                      {'userId': 1, 'id': 2, 'title': 'quis ut nam facilis et officia qui', 'completed': False},
-                      {'userId': 1, 'id': 3, 'title': 'fugiat veniam minus', 'completed': False}]
-
+        test_cases = [
+            {"userId": 3, "id": 44, "title": "cum debitis quis accusamus doloremque ipsa natus sapiente omnis",
+             "completed": True
+             },
+            {
+                "userId": 3,
+                "id": 48,
+                "title": "sit reprehenderit omnis quia",
+                "completed": False
+            },
+            {
+                "userId": 3,
+                "id": 49,
+                "title": "ut necessitatibus aut maiores debitis officia blanditiis velit et",
+                "completed": False
+            }
+        ]
 
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
         result = loop.run_until_complete(main())
         loop.close()
-        random_entry = random.randint(0, len(test_cases)-1)
-        self.assertDictEqual(test_cases[random_entry], result[random_entry] )
 
-
+        for order in test_cases:
+            order_number = order['id'] -1
+            self.assertDictEqual(order, result[order_number])
 
 
 
