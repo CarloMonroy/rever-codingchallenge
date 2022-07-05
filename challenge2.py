@@ -28,10 +28,13 @@ async def main():
         for id in todo_ids:
             url = f"https://jsonplaceholder.typicode.com/todos/{id}"
             tasks.append(asyncio.ensure_future(get_todos(session, url)))
+            await asyncio.sleep(0.01) #We are adding a delay to avoid unclosed ports warning in testing.
+                                    ## previous line to increase performance
         todos_list = await asyncio.gather(*tasks)
         for todo in todos_list:
             todo_list.append(todo)
         write_json_file(json.dumps(todos_list))
+
     return todo_list
 
 
