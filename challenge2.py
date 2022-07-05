@@ -24,19 +24,21 @@ async def get_todos(session, url):
 
 
 async def main():
+    todo_list = []
 
     async with aiohttp.ClientSession() as session:
         tasks = []
         for id in todo_ids:
             url = f"https://jsonplaceholder.typicode.com/todos/{id}"
             tasks.append(asyncio.ensure_future(get_todos(session, url)))
-
         todos_list = await asyncio.gather(*tasks)
         for todo in todos_list:
             write_json_file(todo)
+            todo_list.append(todo)
+    return todo_list
 
 
 asyncio.run(main())
 print("--- %s seconds ---" % (time.time() - start_time))
 
-##write_json_file()
+## time spent for all requests --- 0.23920941352844238 seconds ---
