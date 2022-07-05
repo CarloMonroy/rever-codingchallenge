@@ -52,7 +52,7 @@ def orders_summary_to_csv(order_summary):
     Takes a dict and it creates a csv file called order_summary.csv
     """
     df = pd.DataFrame.from_dict(order_summary)
-    df.to_csv ('order_summary.csv')
+    df.to_csv ('files/order_summary.csv')
 
 
 summary = get_orders_summary(accounts_list)

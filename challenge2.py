@@ -11,7 +11,7 @@ def write_json_file(json_data):
     """
     should save json data into a json file
     """
-    with open('json-data.json', 'a') as file:
+    with open('files/json-data.json', 'a') as file:
         file.write(json.dumps(json_data))
 
 
