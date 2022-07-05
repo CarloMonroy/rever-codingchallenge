@@ -1,39 +1,39 @@
+import asyncio
+import aiohttp
+import json
+
 uri = "https://jsonplaceholder.typicode.com/todos/{}"
 todo_ids = list(range(1, 51))
 
-import requests
-import json
 
-
-
-
-def write_json_file():
+def write_json_file(json_data):
     """
     should save json data into a json file
     """
-    helper_dict = {}
-
-    for id in todo_ids:
-        data = requests.get(f"https://jsonplaceholder.typicode.com/todos/{id}").json
-        helper_dict[data] = id
-    
-    final_json = json.dumps(helper_dict)
-    with open("document.json", "w") as document:
-        document.write(final_json)
+    with open('json-data.json', 'a') as file:
+        file.write(json.dumps(json_data))
 
 
+async def get_todos(session, url):
+    async with session.get(url) as resp:
+        data = await resp.json()
+        return data
 
 
+async def main():
 
-def get_todos():
-    """
-    Given a list of todo ids,  fetch each todo and return a list of todos
-    Example of a request: https://jsonplaceholder.typicode.com/todos/1
+    async with aiohttp.ClientSession() as session:
+        tasks = []
+        for id in todo_ids:
+            url = f"https://jsonplaceholder.typicode.com/todos/{id}"
+            tasks.append(asyncio.ensure_future(get_todos(session, url)))
 
-    Step 2: Make sure to use or have used a mechanism to improve performance
-    """
-    return []
+        todos_list = await asyncio.gather(*tasks)
+        for todo in todos_list:
+            write_json_file(todo)
 
 
-##todos = get_todos()
-write_json_file()
+asyncio.run(main())
+
+
+##write_json_file()

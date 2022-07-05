@@ -1,4 +1,5 @@
 import data
+import pandas as pd
 
 accounts_list = ["u2", "u3"]
 
@@ -23,28 +24,40 @@ def get_orders_summary(accounts):
     This can be done with external libraries
     """
 
-
-    total_orders = 0
-    completed = 0
-    pending = 0
-    orders = data.account_orders
-
-    order.map()
-
-        def count_orders(orders):
-          if data.order[]
-
-
-
-
-
-
-
-
     orders_summary = {}
+    all_orders = data.orders
+    account_orders = data.account_orders
+
+    for user_account in accounts:
+        total_orders = 0
+        completed_orders = 0
+        pending_orders = 0
+        for user_order in account_orders[user_account]:
+            total_orders += 1
+            for order in all_orders:
+                ##print(user_order)
+                ##print(int(order["order_id"]))
+                if user_order == order["order_id"]:
+                    if order["status"] == "pending":
+                        pending_orders += 1
+                    if order["status"] == "completed":
+                        completed_orders += 1
+        orders_summary[user_account] = {
+            'total_orders': total_orders,
+            'completed_orders': completed_orders,
+            'pending_orders': pending_orders
+        }
+
     return orders_summary
 
+def orders_summary_to_csv(order_summary):
+    """
+    Takes a dict and it creates a csv file callse order_summary.csv
+    """
+    df = pd.DataFrame.from_dict(order_summary)
+    df.to_csv ('order_summary.csv')
 
 
 summary  = get_orders_summary(accounts_list)
+orders_summary_to_csv(summary)
 print(summary)
