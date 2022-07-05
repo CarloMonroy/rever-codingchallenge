@@ -115,5 +115,8 @@ Install requirements
 $ pip install -r requirements.txt
 ```
 
-##Challenge 2
-We are using AsyncIO and AIOHTTP to speed up the requests.
+Run tests
+
+```
+$ python -m unittest
+```
