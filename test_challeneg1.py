@@ -3,7 +3,7 @@ from challenge1 import get_orders_summary
 
 
 class MyTestCase(unittest.TestCase):
-    def runtTest(self):
+    def test_challenge1(self):
         accounts_list = ["u2", "u3"]
         test_case1 = {
             'u2': {'total_orders': 4,

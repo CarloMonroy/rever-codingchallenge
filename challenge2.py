@@ -24,17 +24,16 @@ async def get_todos(session, url):
 
 
 async def main():
-    todo_list = []
-
     async with aiohttp.ClientSession() as session:
         tasks = []
+        todo_list = []
         for id in todo_ids:
             url = f"https://jsonplaceholder.typicode.com/todos/{id}"
             tasks.append(asyncio.ensure_future(get_todos(session, url)))
         todos_list = await asyncio.gather(*tasks)
         for todo in todos_list:
-            write_json_file(todo)
             todo_list.append(todo)
+        write_json_file(json.dumps(todos_list))
     return todo_list
 
 
