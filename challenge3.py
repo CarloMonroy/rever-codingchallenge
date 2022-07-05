@@ -19,7 +19,7 @@ def process_file():
     ## Saving cleaned data in jsonfile
     json_result = new_df.to_json(orient='split')
     with open('files/employee_data.json', 'w') as document:
-        document.write(json.dumps(json_result))
+        document.write(json_result)
 
     ## Calculate mean of the annual salaries, max and minimum salaries
     calc_df = new_df["annual_salary"].describe()
