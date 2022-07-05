@@ -99,6 +99,8 @@ JSON (JavaScript Object Notation), specified by RFC 7159 (which obsoletes RFC 46
 [Json](https://docs.python.org/3/library/json.html)
 
 ## Run proyect
+Challenge output files are being saved in files directory
+
 Create your virtual environment
 ```
 $ python3 -m venv .venv
