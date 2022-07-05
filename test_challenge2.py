@@ -5,6 +5,10 @@ from challenge2 import main
 
 class AsyncTest(unittest.TestCase):
     def test_get_todos(self):
+        """
+        This test will print unclosed transport warnings. however in challenge2.py im using
+        with keyword to make sure that we close all connections.
+        """
         test_cases = [
             {"userId": 3, "id": 44, "title": "cum debitis quis accusamus doloremque ipsa natus sapiente omnis",
              "completed": True
