@@ -1,9 +1,7 @@
 import asyncio
 import aiohttp
 import json
-import time
 
-start_time = time.time()
 
 uri = "https://jsonplaceholder.typicode.com/todos/{}"
 todo_ids = list(range(1, 51))
@@ -38,6 +36,4 @@ async def main():
 
 
 asyncio.run(main())
-print("--- %s seconds ---" % (time.time() - start_time))
-
 ## time spent for all requests --- 0.23920941352844238 seconds ---
